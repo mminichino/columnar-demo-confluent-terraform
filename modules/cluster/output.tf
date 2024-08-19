@@ -13,3 +13,7 @@ output "cluster_api_key" {
 output "cluster_api_secret" {
   value = confluent_api_key.cluster_key.secret
 }
+
+output "bootstrap_servers" {
+  value = confluent_kafka_cluster.basic.bootstrap_endpoint
+}
