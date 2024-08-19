@@ -19,20 +19,20 @@ module "cluster" {
   providers = {
     confluent = confluent.primary
   }
-  availability = var.availability
-  cloud        = var.cloud
-  environment  = var.environment
-  region       = var.region
+  availability             = var.availability
+  cloud                    = var.cloud
+  environment              = var.environment
+  region                   = var.region
+  confluent_cloud_owner_id = var.confluent_cloud_owner_id
 }
-
 
 module "connector" {
   source = "./modules/connector"
   providers = {
     confluent = confluent.primary
   }
-  api_key        = var.confluent_cloud_api_key
-  api_secret     = var.confluent_cloud_api_secret
+  api_key        = module.cluster.cluster_api_key
+  api_secret     = module.cluster.cluster_api_secret
   cluster_id     = module.cluster.cluster_id
   environment    = var.environment
   environment_id = module.cluster.environment_id

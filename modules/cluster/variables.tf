@@ -1,3 +1,7 @@
+variable "confluent_cloud_owner_id" {
+  type = string
+}
+
 variable "environment" {
   type        = string
 }
